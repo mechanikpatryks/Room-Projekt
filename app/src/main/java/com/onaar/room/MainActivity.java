@@ -1,5 +1,6 @@
 package com.onaar.room;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +11,7 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -132,10 +134,28 @@ public class MainActivity extends AppCompatActivity {
                 new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        filmyDataBase.zwrocFilmyDAO().usunZBazy(arrayAdapter.getItem(i));
+
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setTitle("Potwierdzenie usunięcia")
+                                .setMessage("Czy chcesz usunąć ten element?")
+                                .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                                                filmyDataBase.zwrocFilmyDAO().usunZBazy(arrayAdapter.getItem(i));
                         filmy.remove(i);
                         arrayAdapter.notifyDataSetChanged();
+                                    }
+                                })
+                                .setNegativeButton("Nie", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                })
+                                .show();
                         return false;
+
+
                     }
                 }
         );
