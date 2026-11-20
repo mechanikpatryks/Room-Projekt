@@ -141,9 +141,9 @@ public class MainActivity extends AppCompatActivity {
                                 .setPositiveButton("Tak", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
-                                                                filmyDataBase.zwrocFilmyDAO().usunZBazy(arrayAdapter.getItem(i));
-                        filmy.remove(i);
-                        arrayAdapter.notifyDataSetChanged();
+                                        filmyDataBase.zwrocFilmyDAO().usunZBazy(arrayAdapter.getItem(i));
+                                        filmy.remove(i);
+                                        arrayAdapter.notifyDataSetChanged();
                                     }
                                 })
                                 .setNegativeButton("Nie", new DialogInterface.OnClickListener() {
