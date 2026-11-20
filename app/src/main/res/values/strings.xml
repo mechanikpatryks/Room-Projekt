@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Room</string>
+    <string-array name="kategorieArray">
+        <item>SciFi</item>
+        <item>Horror</item>
+        <item>Thriller</item>
+        <item>Komedia</item>
+        <item>Fantasy</item>
+    </string-array>
+</resources>
