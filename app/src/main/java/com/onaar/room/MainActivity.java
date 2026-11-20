@@ -121,9 +121,10 @@ public class MainActivity extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         kliknietyFilm = filmy.get(i);
                         editTextTytul.setText(kliknietyFilm.getTytul());
-                        poleNumer.setText(kliknietyFilm.getRokProdukcji());
+                        poleNumer.setText(String.valueOf(kliknietyFilm.getRokProdukcji()));
                         buttonAktualizuj.setVisibility(View.VISIBLE);
                         buttonDodaj.setVisibility(View.GONE);
+
                     }
                 }
         );
@@ -144,6 +145,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         kliknietyFilm.setTytul(editTextTytul.getText().toString());
+                        kliknietyFilm.setRokProdukcji(Integer.parseInt(poleNumer.getText().toString()));
+                        kliknietyFilm.setKategoria(wybranaWartosc);
                         filmyDataBase.zwrocFilmyDAO().aktualizujFilmWBazie(kliknietyFilm);
                         arrayAdapter.notifyDataSetChanged();
                     }
