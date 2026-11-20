@@ -172,5 +172,15 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+        buttonAktualizuj.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                editTextTytul.setText("");
+                poleNumer.setText("");
+                buttonDodaj.setVisibility(View.VISIBLE);
+                buttonAktualizuj.setVisibility(View.GONE);
+                return false;
+            }
+        });
     }
 }
